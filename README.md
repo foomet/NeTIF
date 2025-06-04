@@ -50,21 +50,21 @@ In order to replicate the experiments utilizing the CNN-Trans-2 method, complete
 <div style="display: flex; justify-content: space-between; gap: 10px;">  
     <div style="flex: 1; text-align: center; border: 1px solid #ccc; padding: 10px;"> 
         <p><b>Figure 1.</b> Visualization of CNN hidden units after 2nd layer for benign/malicious instances (1×1504 vectors stretched).</p>
-        <img src="./Figures/figure3.png" style="max-width: 2000px;" width=2000>  
+        <img src="./Figures/figure3.png" style="max-width: 2000px;" >  
     </div> 
 </div>
 <div style="display: flex; justify-content: space-between; gap: 10px;">  
     <div style="flex: 1; text-align: center; border: 1px solid #ccc; padding: 10px;"> 
         <p><b>Figure 2.</b> Count of flows containing certain numbers of packets</p>
-        <img src="./Figures/old_figure3_broken_yaxis.png" alt="CICDDoS2019 data distribution" style="max-width: 100%;" width=750>  
+        <img src="./Figures/old_figure3_broken_yaxis.png" alt="CICDDoS2019 data distribution" style="max-width: 100%;" >  
     </div> 
     <div style="flex: 1; text-align: center; border: 1px solid #ccc; padding: 10px;"> 
         <p><b>Figure 3.</b> F1-scores for various transformation and classification combinations on CICIDS2017</p>
-        <img src="./Figures/figure5.png" style="max-width: 100%;" width=750>  
+        <img src="./Figures/figure5.png" style="max-width: 100%;" >  
     </div> 
     <div style="flex: 1; text-align: center; border: 1px solid #ccc; padding: 10px;"> 
         <p><b>Figure 4.</b> F1-scores for various p on CICIDS2017 and UNSW</p>
-        <img src="./Figures/f1_scores_varying_p.png" style="max-width: 100%;" width=500>  
+        <img src="./Figures/f1_scores_varying_p.png" style="max-width: 100%;" >  
     </div>
 </div>
 
