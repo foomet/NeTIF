@@ -26,7 +26,7 @@ In order to replicate the experiments utilizing the NeTIF method, perform the fo
     * Step 1: Produces the preprocessed flow-based dataset for the given dataset.
     * Step 2: Generates the required *labelled_pcap_csv* files.
     * Step 3: Generates data using the NeTIF data transform.
-    * Step 4: Trains and validates a CNN model on the data from step 3. 
+    * Step 4: Trains and validates a CNN model on the data from step 3. Be sure to rename the file path to the one chosen in step 3.
 
 ### 2. CNN-Trans-1
 In order to replicate the experiments utilizing the CNN-Trans-1 method, perform the following steps:
