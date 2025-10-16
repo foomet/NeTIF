@@ -88,7 +88,7 @@ In Figure 3, we compare the F1-scores of different combinations of transformatio
 
 * #### Figure 4
 
-As Figure 4 shows, for CICIDS2017, performance remains constant at a perfect F1-score (∼ 1.0) across all values of p, suggesting that even minimal flow information is sufficient for effective classification. In contrast, the UNSW-NB15 dataset exhibits a decline in performance as p increases, where the highest F1-score achieved at p = 1. This indicates that reducing the number of usable flows and increasing the number of packets for aggregation in flows at higher p negatively affects model performance, likely due to decreased training diversity and sample size. These results align with the observed flow length distributions in both datasets. As detailed in Figure 2, most flows contain only a small number of packets—especially in the UNSW-NB15 dataset, where flows longer than 7 packets are exceedingly rare. As a result, using a smaller p value maximizes data retention and helps maintain model generalizability by leveraging a larger, more diverse training set.
+As Figure 4 shows, in CICIDS2017 the F1-score is highest at lower p values, indicating minimal flow information suffices for classification. Similarly, in UNSW-NB15 performance drops as p increases, with the best score at p = 1, likely due to reduced training diversity and sample size when more packets are aggregated per flow. This aligns with flow length distributions - especially in UNSW-NB15, where flows longer than seven packets are rare - showing that smaller p values retain more data and improve model generalizability.
 
 
 ## Model Evaluation
