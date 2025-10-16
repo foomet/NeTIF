@@ -44,6 +44,12 @@ In order to replicate the experiments utilizing the CNN-Trans-2 method, complete
 1) Execute the *get_CNN-Trans-2_data.ipynb* file. This will generate the testing data by using randomly selected flow sequences.
 2) Execute the *test_on_CNN-Trans-2_data.ipynb* file. This will evaluate the trained model on the newly generated test data.
 
+
+### Batch Training
+If you have the processed data for each method, you can use these batch training files for your convenience. 
+ * For NeTIF and UNSW-NB15, the data should be processed using the NeTIF transformation.
+ * For the CNN-Trans methods, the data should be the preprocessed flows -- before image transformation.
+
 ---
 ## Results
 
