@@ -9,13 +9,11 @@ def num_packets_bar_plot():
     labels.append(r'$\geq15$')
     x = np.arange(len(labels))
 
-    # Data (extracted from your PDF visual)
     cicids_values = [101807, 12175, 3505, 1589, 956, 984, 4191, 1114, 982, 1234, 1724, 1710, 1493, 2566, 20538]
     unsw_values   = [69326, 3047,  480,  237, 182, 201,  239,   55,  30,   13,   34,   45,   15,   13,   212]
 
     width = 0.35
 
-    # Use the exact colors from your PDF:
     cicids_color = "#619CFF"     # Light blue
     unsw_color = "#00A86B"       # Reddish
 
