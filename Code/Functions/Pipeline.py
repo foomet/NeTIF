@@ -6,7 +6,7 @@ from datetime import datetime
 import glob
 
 
-def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
+def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False, skip_january=False):
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s -%(message)s')
     if dataset=='UNSW':
         logging.info("Checking directory for files ......")
@@ -18,30 +18,41 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
             # If just_label, do not parse the PCAP files, as they have already been parsed.
             if not just_label:
                 logging.info("Files found. Initiating PCAP Parsing.......")
-                pcap_file_list=[]
-                pcap_jan=in_dir+"/pcap 22-1-2015/"
+                if not skip_january:
+                    pcap_file_list=[]
+                    pcap_jan=in_dir+"/pcap 22-1-2015/"
 
-                # Changed manually by me (Stephen) on 5/8/2025 ----------------
-                # for x in range(1,54): ## 22-1-2015 have 53 pcap files
-                #     pcap_file_list.append(pcap_jan+str(x)+".pcap")
+                    # Changed manually by me (Stephen) on 5/8/2025 ----------------
+                    # for x in range(1,54): ## 22-1-2015 have 53 pcap files
+                    #     pcap_file_list.append(pcap_jan+str(x)+".pcap")
 
-                pcap_file_list = glob.glob(os.path.join(pcap_jan, "*.pcap"))
-                pcap_file_list.sort()  # Optional: ensures files are in numerical order like 1.pcap, 2.pcap, etc.
+                    pcap_file_list = glob.glob(os.path.join(pcap_jan, "*.pcap"))
+                    pcap_file_list.sort()  # Optional: ensures files are in numerical order like 1.pcap, 2.pcap, etc.
 
-                print(f"[INFO] Found {len(pcap_file_list)} PCAP files in {pcap_jan}")
-                if not pcap_file_list:
-                    logging.warning("No PCAP files found! Please check your directory path.")
+                    # NEW
+                    # if specific_index is not None:
+                    #     pcap_file_list = [pcap_file_list[specific_index - 1]]
+                    #     print(pcap_file_list)
+                    #     print(f"[INFO] Processing only PCAP file number {specific_index}")
+                    # NEW   
 
-                # -------------------------------------------------------------
+                    # NEW FOR TESTING
+                    # pcap_file_list = pcap_file_list[0]
+
+                    print(f"[INFO] Found {len(pcap_file_list)} PCAP files in {pcap_jan}")
+                    if not pcap_file_list:
+                        logging.warning("No PCAP files found! Please check your directory path.")
+
+                    # -------------------------------------------------------------
 
 
-                out_file=out_dir+"/pcap_file_csv_parser/22-1-1015/"
-                isExist=os.path.exists(out_file)
-                if not isExist:
-                    os.makedirs(out_file)
-                logging.info("Parsing 22-1-2015 Files .........")
-                pcap_parser(pcap_file_list,out_file,1)
-
+                    out_file=out_dir+"/pcap_file_csv_parser/22-1-2015/"
+                    isExist=os.path.exists(out_file)
+                    if not isExist:
+                        os.makedirs(out_file)
+                    logging.info("Parsing 22-1-2015 Files .........")
+                    pcap_parser(pcap_file_list,out_file,1)
+            
 
                 logging.info("Parsing 17-2-2015 Files .........")
                 pcap_file_list=[]
@@ -62,7 +73,7 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                 # -------------------------------------------------------------
 
 
-                out_file=out_dir+"/pcap_file_csv_parser/17-2-1015/"
+                out_file=out_dir+"/pcap_file_csv_parser/17-2-2015/"
                 isExist=os.path.exists(out_file)
                 if not isExist:
                     os.makedirs(out_file)
@@ -89,7 +100,7 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                 # -------------------------------------------------------------
 
                 logging.info("Labeling 17-2-2015 Files .........")
-                output_file=out_dir+"/Labelled_pcap_file/17-2-1015/"
+                output_file=out_dir+"/Labelled_pcap_file/17-2-2015/"
                 isExist=os.path.exists(output_file)
                 if not isExist:
                     os.makedirs(output_file)
@@ -103,7 +114,7 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                 label(pcap_csv,processed_csv_file,output_file,1)
 
                 ### Labeling 22-1-2015
-                out_file=out_dir+"/pcap_file_csv_parser/22-1-1015/"
+                out_file=out_dir+"/pcap_file_csv_parser/22-1-2015/"
                 pcap_csv=[]
 
                 # Changed manually by me (Stephen) on 5/8/2025 ----------------
@@ -131,6 +142,7 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                 #     pcap_file_list.append(pcap_jan+str(x)+".pcap")
 
                 pcap_file_list = glob.glob(os.path.join(pcap_jan, "*.pcap"))
+
                 pcap_file_list.sort()  # Optional: ensures files are in numerical order like 1.pcap, 2.pcap, etc.
 
                 print(f"[INFO] Found {len(pcap_file_list)} PCAP files in {pcap_jan}")
@@ -138,7 +150,7 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                     logging.warning("No PCAP files found! Please check your directory path.")
 
                 # -------------------------------------------------------------
-                out_file = out_dir + "/pcap_file_csv_parser/22-1-1015/"
+                out_file = out_dir + "/pcap_file_csv_parser/22-1-2015/"
                 isExist = os.path.exists(out_file)
                 if not isExist:
                     os.makedirs(out_file)
@@ -161,7 +173,7 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                     logging.warning("No PCAP files found! Please check your directory path.")
 
                 # -------------------------------------------------------------
-                out_file = out_dir + "/pcap_file_csv_parser/17-2-1015/"
+                out_file = out_dir + "/pcap_file_csv_parser/17-2-2015/"
                 isExist = os.path.exists(out_file)
                 if not isExist:
                     os.makedirs(out_file)
@@ -188,14 +200,14 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                 # -------------------------------------------------------------
 
                 logging.info("Labeling 17-2-2015 Files .........")
-                output_file = out_dir + "/Labelled_pcap_file/17-2-1015/"
+                output_file = out_dir + "/Labelled_pcap_file/17-2-2015/"
                 isExist = os.path.exists(output_file)
                 if not isExist:
                     os.makedirs(output_file)
                 label(pcap_csv, processed_csv_file, output_file, 1)
 
                 ### Labeling 22-1-2015
-                out_file = out_dir + "/pcap_file_csv_parser/22-1-1015/"
+                out_file = out_dir + "/pcap_file_csv_parser/22-1-2015/"
                 pcap_csv = []
 
                 # Changed manually by me (Stephen) on 5/8/2025 ----------------
@@ -214,7 +226,7 @@ def pipeline(in_dir,out_dir,dataset,processed_csv_file, just_label=False):
                 # -------------------------------------------------------------
 
             logging.info("Labeling 22-1-2015 Files .............")
-            output_file=out_dir+"/Labelled_pcap_file/22-1-1015/"
+            output_file=out_dir+"/Labelled_pcap_file/22-1-2015/"
             isExist=os.path.exists(output_file)
             if not isExist:
                 os.makedirs(output_file)

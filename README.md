@@ -9,6 +9,11 @@ This repository contains experimental results and visualizations from our paper:
 
 ---
 
+## Abstract
+
+With the rapid increase in cyber attacks, Machine Learning (ML)-based Network Intrusion Detection Systems (NIDS) are essential for safeguarding computer network security. Most ML-based NIDS rely on either flow-based or packet-based network traffic feature representations. However, flow-based methods may overlook characteristics in individual packets and fail to detect certain attacks. Meanwhile, packet-based methods primarily capture the malicious payload of individual packets, often missing the abnormal correlations between multiple packets, rendering them ineffective against certain types of attacks. To overcome these limitations, we propose a Network Traffic to Image Features (NeTIF)-based Intrusion Detection System (IDS). NeTIF consists of two steps. The first step is a novel data transformation method that derives image representations of network flows from raw network packets. The second step is a Convolutional Neural Network (CNN) that automatically learns feature representations and patterns for detecting anomalous network flows. Our extensive experimental results on two public datasets demonstrate that our NeTIF-based IDS achieves a higher detection rate compared to traditional IDS approaches. Furthermore, our method’s superior performance can be easily explained through plotting intermediate features. This contributes to the model usability and interpretability, which is an increasingly critical aspect in cybersecurity applications.
+
+---
  ## Methods
 
 ### 1. NeTIF

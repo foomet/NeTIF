@@ -733,12 +733,11 @@ if __name__ == "__main__":
     
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--numclass", type=int, default=8, help="The number of target classes in the data")
+    parser.add_argument("--numclass", type=int, default=9, help="The number of target classes in the data")
     args = parser.parse_args()
 
     # Requires Python 3.11 (python version 3.11.13 is used)
     generate_images(args.numclass)
-    # training_and_testing(args.numclass, train_constituent_models=True)
     test_on_shuffled_on_ensemble(args.numclass)
 
     
